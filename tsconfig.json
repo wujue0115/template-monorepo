@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@template/core": ["./packages/core/src/index.ts"],
+      "@template/utils": ["./packages/utils/src/index.ts"]
+    },
+    "resolveJsonModule": true,
+    "types": ["node", "vitest/globals"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "exclude": ["**/dist/**", "**/node_modules/**"]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@template/utils",
+  "type": "module",
+  "version": "0.1.0",
+  "private": false,
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@template/core": "workspace:*"
+  }
+}

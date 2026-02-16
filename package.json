@@ -1,0 +1,40 @@
+{
+  "name": "template-monorepo",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "prepare": "TSX_DISABLE_CACHE=1 tsx scripts/prepare.ts",
+    "build": "pnpm -r --filter './packages/*' run build && pnpm -C apps/playground run build",
+    "dev": "pnpm -r --parallel run dev",
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm lint --fix",
+    "typecheck": "pnpm -r --filter './packages/*' run typecheck && pnpm -C apps/playground run typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ci": "pnpm build && pnpm typecheck && pnpm lint && pnpm test"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:eslint",
+    "@types/node": "catalog:types",
+    "eslint": "catalog:eslint",
+    "eslint-plugin-format": "catalog:eslint",
+    "execa": "catalog:utils",
+    "lint-staged": "catalog:utils",
+    "simple-git-hooks": "catalog:utils",
+    "tsdown": "catalog:build",
+    "tsx": "catalog:typescript",
+    "typescript": "catalog:typescript",
+    "vite": "catalog:vite",
+    "vitest": "catalog:testing"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,mts,cts,tsx,json,md,yml,yaml}": [
+      "eslint --fix"
+    ]
+  }
+}
